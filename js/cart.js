@@ -19,10 +19,16 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() {
+  tbody.textContent='';
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
+
+  let table=document.getElementById('cart');
+  let tbody=document.createElement('tbody');
+  table.appendChild(tbody);
 
   // TODO: Find the table body
 
