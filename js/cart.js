@@ -22,12 +22,12 @@ function renderCart() {
 function clearCart() {
   tbody.textContent='';
 }
-let tbody = document.getElementsByTagName("tbody");
+let tbody = document.createElement('tbody');
+table.appendChild(tbody);
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
- 
-  for (let i=0;i<this.items.length;i++){
+  for (let i=0;i<Product.allProducts.length;i++){
     let dataRow=document.createElement('tr');
     tbody.appendChild(dataRow);
     let tdElement1=document.createElement('td');
@@ -39,8 +39,6 @@ function showCart() {
     let tdElement3=document.createElement('td');
     dataRow.appendChild(tdElement3);
     tdElement3.textContent='item';
-
-
   }
  
 
@@ -57,12 +55,12 @@ function removeItemFromCart(event) {
 
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   Cart.prototype.removeItem.call(this);
-  //this.item.splice(indexOf(item),1);
   // TODO: Save the cart back to local storage
-  loadCart();
+  Cart.prototype.localStorage.call(this);
   // TODO: Re-draw the cart table
   showCart();
-}
 
+  
+}
 // This will initialize the page and draw the cart on screen
 renderCart();
