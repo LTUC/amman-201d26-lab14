@@ -1,7 +1,7 @@
 /* global Product, Cart */
 
 'use strict';
-
+console.log(Product.allProducts);
 // Set up an empty cart for use on this page.
 const cart = new Cart([]);
 
@@ -12,7 +12,10 @@ function populateForm() {
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
   for (let i in Product.allProducts) {
-
+let option=document.createElement('option');
+selectElement.appendChild(option);
+ option.textContent=Product.allProducts[i].name;
+ 
   }
 
 }
@@ -23,29 +26,64 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
-
+  event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
   cart.saveToLocalStorage();
+  // console.log(cart.items.lenght);
   updateCounter();
   updateCartPreview();
 
 }
-
 // TODO: Add the selected item and quantity to the cart
+
 function addSelectedItemToCart() {
+
   // TODO: suss out the item picked from the select list
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
+  let items =document.getElementById('items').value;
+
+  let quantity=Number(document.getElementById('quantity').value);
+
+  cart.addItem(items,quantity);
+
+
+
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+let counter = 0;
+function updateCounter() {
+
+  let counts = document.getElementById('itemCount');
+
+
+  counter = cart.items.length;
+ 
+ counts.textContent =` have : ${counter}`;
+
+  
+  
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
+  let contents =document.getElementById('cartContents');
+   let ulElement = document.createElement('ul');
+   contents.appendChild(ulElement);
+   let liElement = document.createElement('li');
+   ulElement.appendChild(liElement);
+   
   // TODO: Add a new element to the cartContents div with that information
+  let items = document.getElementById('items').value;
+  let quantity=Number(document.getElementById('quantity').value);
+  liElement.textContent= `${items} : ${quantity}`; 
+
+   
+
+
 }
 
 // Set up the "submit" event listener on the form.
