@@ -5,11 +5,7 @@
 // Set up an empty cart for use on this page.
 // console.log(Product.allProducts)
 const cart = new Cart([]);
-
-<<<<<<< HEAD
 console.log(cart);
-=======
->>>>>>> 3370d36b51f45001814be3ad55da6bfa0c65f91a
 
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
@@ -41,91 +37,59 @@ function handleSubmit(event) {
 
 }
 let counter=0;
-<<<<<<< HEAD
+
 let item;
 let quantity;
 // TODO: Add the selected item and quantity to the cart
- function addSelectedItemToCart() {
-
-  item= document.getElementById('items').value;
-
-  quantity= document.getElementById('quantity').value;
-  cart.addItem(item,quantity)
-
-=======
-let selected;
-let quantity;
-
+ 
 // TODO: Add the selected item and quantity to the cart
  function addSelectedItemToCart() {
-  selected= document.getElementById('items').value;
+  item= document.getElementById('items').value;
   quantity=document.getElementById('quantity').value;
  
-  cart.addItem(selected,quantity);
+  cart.addItem(item,quantity);
   
->>>>>>> 3370d36b51f45001814be3ad55da6bfa0c65f91a
+ 
   cart.saveToLocalStorage()
   {
     const cartItems = JSON.stringify(localStorage.getItem('cart')) ;
     console.log(cartItems)
   }
-<<<<<<< HEAD
+
   //cart.addItem(item,quantity)
   counter=counter+1;
 
-
+ }
   //cart.push(item)
   //cart.saveToLocalStorage(item,quantity);
   //console.log(cart);
-=======
- // localStorage.setItem(selected,quantity);
-  counter=counter+1;
+ // localStorage.setItem(selected,quantity);  
   
-  
->>>>>>> 3370d36b51f45001814be3ad55da6bfa0c65f91a
   // TODO: suss out the item picked from the select list
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
-}
+
+
+
 
 
 
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
+
+
 function updateCounter() {
-<<<<<<< HEAD
+
   let count=document.getElementById('itemCount')
   count.textContent=` has ${counter} items`
-=======
-   let count=document.getElementById('itemCount')
-       count.textContent=` has ${counter} items`
-       
-  
-}
->>>>>>> 3370d36b51f45001814be3ad55da6bfa0c65f91a
-
 }
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
-
-<<<<<<< HEAD
-
-
-  let li =document.getElementById('cartContents');
-    let item= document.getElementById('items').value;
-
-  let quantity= document.getElementById('quantity').value;
-let shopping= document.createElement('p');
-shopping.textContent = `The ${item} of ${quantity}`;
-  li.appendChild(shopping);
-=======
   let cartContents=document.getElementById('cartContents')
   let cartProducts=document.createElement('p')
   cartContents.appendChild(cartProducts);
-  cartProducts.textContent=` Cart : item = ${selected} quantity = ${quantity}`;
-
+  cartProducts.textContent=` Cart : item = ${item} quantity = ${quantity}`;
     
->>>>>>> 3370d36b51f45001814be3ad55da6bfa0c65f91a
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
 }
@@ -139,4 +103,3 @@ catalogForm.addEventListener('submit', handleSubmit);
 // Before anything else of value can happen, we need to fill in the select
 // drop down list in the form.
 populateForm();
-
