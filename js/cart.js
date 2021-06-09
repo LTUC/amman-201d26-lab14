@@ -6,9 +6,11 @@ const table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
 let cart;
 
+
 function loadCart() {
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
   cart = new Cart(cartItems);
+  //console.log(cart)
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
@@ -19,7 +21,11 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
+
 function clearCart() {
+  // let tr = document.getElementsByTagName('tbody');
+  // tr.deleteRow();
+  
 
  /* let tr = document.getElementsByTagName('tbody');
   tr.deleteRow();*/
@@ -28,16 +34,7 @@ function clearCart() {
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
-
-
- 
-
-  // TODO: Iterate over the items in the cart
-  // TODO: Create a TR
-  // TODO: Create a TD for the delete link, quantity,  and the item
-  // TODO: Add the TR to the TBODY and each of the TD's to the TR
-  // TODO: Iterate over the items in the cart
-  // TODO: Create a TR
+  //let parent=document.getElementById('cart')
   let parent=document.getElementById('cart')
   for (let j = 0; j < 20; j++) {
   
@@ -53,24 +50,48 @@ function showCart() {
   rowTableBody.appendChild(tdElement3);
   tdElement3.textContent= cart.items[j].quantity;
 
+
+}
+
+  
+ 
+ 
+
+
+ 
+
+  // TODO: Iterate over the items in the cart
+  // TODO: Create a TR
+  // TODO: Create a TD for the delete link, quantity,  and the item
+  // TODO: Add the TR to the TBODY and each of the TD's to the TR
+  // TODO: Iterate over the items in the cart
+  // TODO: Create a TR
+  
  
   }
 
   
 
-}
 function removeItemFromCart(event) {
+
 
   if (event.target.textContent === 'X') {
     cart.removeItem(event.target.id);}
     localStorage.setItem('cart',JSON.stringify(cart.items));
 
+
+  //   }
+  
+  
+  //localStorage.setItem('cart',JSON.stringify(cart.items));
+
+   //renderCart();
+}
+
+
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
-  
-  }
-  
 
 
 
