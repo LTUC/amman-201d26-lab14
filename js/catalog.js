@@ -65,6 +65,10 @@ function addSelectedItemToCart() {
 
 
 
+  
+  
+  
+  
   // let cartItems = localStorage.getItem('items');
 
   // cartItems.push(newItem);

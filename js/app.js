@@ -27,6 +27,8 @@ Cart.prototype.removeItem = function (item) {
   // this.Product.allProduct=`images ${item}`
   // allProduct.push(this);
 
+
+
   localStorage.removeItem('cart');
 
   
