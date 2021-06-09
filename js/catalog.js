@@ -30,7 +30,7 @@ function handleSubmit(event) {
   // Do all the things ...
   addSelectedItemToCart();
   cart.saveToLocalStorage();
-  console.log(cart.items.lenght);
+  // console.log(cart.items.lenght);
   updateCounter();
   updateCartPreview();
 
@@ -42,26 +42,26 @@ function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
-  const items =document.getElementById('items').value;
+  let items =document.getElementById('items').value;
 
-  const quantity=document.getElementById('quantity').value;
+  let quantity=Number(document.getElementById('quantity').value);
 
-cart.addItem(items,quantity);
-console.log(items);
-console.log(quantity);
+  cart.addItem(items,quantity);
+
 
 
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
+let counter = 0;
 function updateCounter() {
 
-  let count = document.getElementById('itemCount');
+  let counts = document.getElementById('itemCount');
 
 
-  
-
- count.textContent = Cart.items.lenght;
+  counter = cart.items.length;
+ 
+ counts.textContent =` have : ${counter}`;
 
   
   
@@ -70,8 +70,18 @@ function updateCounter() {
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
+  let contents =document.getElementById('cartContents');
+   let ulElement = document.createElement('ul');
+   contents.appendChild(ulElement);
+   let liElement = document.createElement('li');
+   ulElement.appendChild(liElement);
+   
   // TODO: Add a new element to the cartContents div with that information
+  let items = document.getElementById('items').value;
+  let quantity=Number(document.getElementById('quantity').value);
+  liElement.textContent= `${items} : ${quantity}`; 
 
+   
 
 
 }
