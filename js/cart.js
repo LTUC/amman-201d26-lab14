@@ -17,14 +17,16 @@ function renderCart() {
   clearCart();
   showCart();
 }
-
+let remove =document.getElementById('cart')
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
   
-  // deleteRow(table);
-  
+  // table=remove('tr');
+
+  remove.innerHTML='';
 
 }
+
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
@@ -36,8 +38,13 @@ function showCart() {
 
   // TODO: Create a TR
 
-  let row = document.createElement('tr');
-  table.appendChild(row);
+  // let row = document.createElement('tr');
+  // table.appendChild(row);
+  // let data =document.createComment('td');
+  // row.appendChild(data);
+  // data.textContent= cart.items;
+
+  // console.log(data);
 
 
 
@@ -51,6 +58,14 @@ function removeItemFromCart(event) {
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
+
+
+  cart.removeItem(Number(event.target.id));
+  cart.saveToLocalStorage();
+  event.stopPropagation();
+  clearCart();
+  showCart();
+  
 
 }
 
