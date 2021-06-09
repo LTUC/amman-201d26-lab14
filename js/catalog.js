@@ -6,6 +6,8 @@
 // console.log(Product.allProducts)
 const cart = new Cart([]);
 
+console.log(cart);
+
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
 function populateForm() {
@@ -35,25 +37,55 @@ function handleSubmit(event) {
   updateCartPreview();
 
 }
-
+let counter=0;
+let item;
+let quantity;
 // TODO: Add the selected item and quantity to the cart
  function addSelectedItemToCart() {
-  let selected= document.getElementsById('items')
-  
- 
-  
-  
+
+  item= document.getElementById('items').value;
+
+  quantity= document.getElementById('quantity').value;
+  cart.addItem(item,quantity)
+
+  cart.saveToLocalStorage()
+  {
+    const cartItems = JSON.stringify(localStorage.getItem('cart')) ;
+    console.log(cartItems)
+  }
+  //cart.addItem(item,quantity)
+  counter=counter+1;
+
+
+  //cart.push(item)
+  //cart.saveToLocalStorage(item,quantity);
+  //console.log(cart);
   // TODO: suss out the item picked from the select list
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
 }
 
 
-// TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
 
+
+// TODO: Update the cart count in the header nav with the number of items in the Cart
+function updateCounter() {
+  let count=document.getElementById('itemCount')
+  count.textContent=` has ${counter} items`
+
+}
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
+
+
+
+  let li =document.getElementById('cartContents');
+    let item= document.getElementById('items').value;
+
+  let quantity= document.getElementById('quantity').value;
+let shopping= document.createElement('p');
+shopping.textContent = `The ${item} of ${quantity}`;
+  li.appendChild(shopping);
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
 }
