@@ -1,7 +1,7 @@
 'use strict';
 
 // Cart constructor.
-const Cart = function (items) {
+let Cart = function (items) {
   // this.items is an array of CartItem instances.
   this.items = items;
 };
@@ -21,20 +21,42 @@ Cart.prototype.saveToLocalStorage = function () {
 Cart.prototype.removeItem = function (item) {
   // TODO: Fill in this instance method to remove one item from the cart.
   // Note: You will have to decide what kind of parameter to pass in here!
+
+  
+  // this.item=item.split(".")[0];
+  // this.Product.allProduct=`images ${item}`
+  // allProduct.push(this);
+
+
+
+  localStorage.removeItem('cart');
+
+  
+
+
+let index = Product.allProducts.indexOf(5);
+if (index > -1) {
+  Product.allProducts.splice(index, 1);
+}
+
+// array = [2, 9]
+console.log(Product.allProducts);
+
 };
 
-const CartItem = function (product, quantity) {
+let CartItem = function (product, quantity) {
   this.product = product;
   this.quantity = quantity;
 };
 
 // Product contructor.
-const Product = function (filePath, name) {
+let Product = function (filePath, name) {
   this.filePath = filePath;
   this.name = name;
   Product.allProducts.push(this);
 };
 Product.allProducts = [];
+// console.log(Product.allProducts);
 
 function generateCatalog() {
   new Product('assets/bag.jpg', 'Bag');
@@ -61,3 +83,4 @@ function generateCatalog() {
 
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
+
