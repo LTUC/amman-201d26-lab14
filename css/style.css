@@ -1,0 +1,36 @@
+h1{
+
+
+
+    font-size: revert;
+    text-align: center;
+    background: antiquewhite;
+    margin: 10px 20px 30px 40px;
+}
+
+ul{
+
+
+position: relative;
+
+}
+ul li{
+
+display: inline-block;
+background-color: rgb(199, 107, 153);
+padding: 15px;
+text-align: center;
+font-size: larger;
+font-style: italic;
+font-family: cursive;
+color: white;
+}
+
+
+ul li a {
+
+
+    text-decoration: none;
+    color: white;
+    
+}
